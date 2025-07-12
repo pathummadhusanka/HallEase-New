@@ -2,9 +2,6 @@ import {
 	LayoutDashboard,
 	CalendarClock,
 	Building2,
-	CircleCheckBig,
-	CircleX,
-	CirclePause,
 	FilePlus2,
 	Airplay,
 	BookOpen,
@@ -19,10 +16,9 @@ import {
 	UserPlus,
 	ContactRound,
 	Lock,
-	PencilRuler,
-	Cast,
 	Library,
 	SquareLibrary,
+	Newspaper,
 } from 'lucide-react';
 
 export interface SubMenuItem {
@@ -35,6 +31,7 @@ export interface SidebarItem {
 	itemTitle: string;
 	itemUrl: string;
 	itemIcon: React.ComponentType<{ size?: number; className?: string }>;
+	roleSlugs: string[];
 	subMenu?: SubMenuItem[];
 }
 
@@ -45,7 +42,7 @@ export interface SidebarSection {
 
 const sidebarMenu = [
 	{
-		sectionTitle: 'Dashboard & Overview',
+		sectionTitle: 'Overview',
 		sectionMenu: [
 			{
 				itemTitle: 'Dashboard',
@@ -54,37 +51,43 @@ const sidebarMenu = [
 				roleSlugs: [],
 			},
 			{
-				itemTitle: 'Calender View',
-				itemUrl: '/calender-view',
+				itemTitle: 'Timeline',
+				itemUrl: '/timeline',
 				itemIcon: CalendarClock,
 				roleSlugs: [],
 			},
 		],
 	},
 	{
-		sectionTitle: 'Event Management',
+		sectionTitle: 'Events',
 		sectionMenu: [
 			{
-				itemTitle: 'View Events',
-				itemUrl: '/event',
+				itemTitle: 'General Lectures', // changed from 'View Events'
+				itemUrl: '/events',
 				itemIcon: Airplay,
 				roleSlugs: [],
 			},
 		],
 	},
 	{
-		sectionTitle: 'Hall & Booking Management',
+		sectionTitle: 'Reservations',
 		sectionMenu: [
 			{
 				itemTitle: 'All Reservations',
 				itemUrl: '/all-reservations',
-				itemIcon: SquareLibrary,
+				itemIcon: Library,
 				roleSlugs: [],
 			},
 			{
 				itemTitle: 'My Reservations',
 				itemUrl: '/my-reservations',
-				itemIcon: Library,
+				itemIcon: SquareLibrary,
+				roleSlugs: [],
+			},
+			{
+				itemTitle: 'Public Reservations',
+				itemUrl: '/public-reservations',
+				itemIcon: Newspaper,
 				roleSlugs: [],
 			},
 			{
@@ -92,42 +95,18 @@ const sidebarMenu = [
 				itemUrl: '/reserve',
 				itemIcon: FilePlus2,
 				roleSlugs: [],
-				subMenu: [
-					{
-						subTitle: 'Event',
-						subUrl: '/reserve/event',
-						subIcon: Cast,
-					},
-					{
-						subTitle: 'Lecture',
-						subUrl: '/reserve/lecture',
-						subIcon: PencilRuler,
-					},
-				],
 			},
 			{
-				itemTitle: 'Reservation Requests',
-				itemUrl: '/requests',
+				itemTitle: 'Saved Drafts',
+				itemUrl: '/reservation-drafts',
 				itemIcon: BookOpen,
 				roleSlugs: ['MBR'],
-				subMenu: [
-					{
-						subTitle: 'Pending',
-						subUrl: '/requests/pending',
-						subIcon: CirclePause,
-					},
-					{
-						subTitle: 'Approved',
-						subUrl: '/requests/approved',
-						subIcon: CircleCheckBig,
-					},
-					{
-						subTitle: 'Rejected',
-						subUrl: '/requests/rejected',
-						subIcon: CircleX,
-					},
-				],
 			},
+		],
+	},
+	{
+		sectionTitle: 'Spaces',
+		sectionMenu: [
 			{
 				itemTitle: 'Hall Facilities',
 				itemUrl: '/halls',
@@ -137,7 +116,7 @@ const sidebarMenu = [
 		],
 	},
 	{
-		sectionTitle: 'Notifications & Communication',
+		sectionTitle: 'Notifications',
 		sectionMenu: [
 			{
 				itemTitle: 'Announcements',
@@ -154,7 +133,7 @@ const sidebarMenu = [
 		],
 	},
 	{
-		sectionTitle: 'Reports & Analytics',
+		sectionTitle: 'Insights',
 		sectionMenu: [
 			{
 				itemTitle: 'Reports',
@@ -171,7 +150,7 @@ const sidebarMenu = [
 		],
 	},
 	{
-		sectionTitle: 'Settings & Configurations',
+		sectionTitle: 'Preferences',
 		sectionMenu: [
 			{
 				itemTitle: 'System Preferences',
@@ -207,11 +186,11 @@ const sidebarMenu = [
 		],
 	},
 	{
-		sectionTitle: 'Help & Support',
+		sectionTitle: 'Assistance',
 		sectionMenu: [
 			{
 				itemTitle: 'FAQs & Documentation',
-				itemUrl: '/documentation',
+				itemUrl: '/faq',
 				itemIcon: CircleHelp,
 				roleSlugs: [],
 			},

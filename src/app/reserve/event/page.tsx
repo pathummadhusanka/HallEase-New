@@ -1,28 +1,26 @@
-import React from 'react';
-import ReserveEventForm from './comp/ReserveEventForm';
+'use client';
+
 import SidebarLayout from '@/layouts/Sidebar/Layout';
 import PageHeader from '@/components/custom/PageHeader';
+import { useRouter } from 'next/navigation';
 
-async function page() {
-	// --> TODO: Use a proper authentication function call here
-	// const supabase = await createClient();
-	// const { data, error } = await supabase.auth.getUser();
-	// if (error || !data?.user) {
-	// 	redirect('/login');
-	// }
-	// <--
+// Import the original stepper ReserveEventForm
+import EventForm from '../forms/event/ReserveEventForm';
+
+export default function EventReservePage() {
+	const router = useRouter();
+
+	const handleBackToSelection = () => {
+		router.push('/reserve');
+	};
 
 	return (
 		<SidebarLayout>
 			<PageHeader
-				title='Reserve an Event Hall'
-				descriptions={[
-					'Provide the required details to proceed with your booking',
-				]}
+				title='Reserve Event'
+				descriptions={['Create a reservation for your event']}
 			/>
-			<ReserveEventForm />
+			<EventForm onBackToSelection={handleBackToSelection} />
 		</SidebarLayout>
 	);
 }
-
-export default page;
