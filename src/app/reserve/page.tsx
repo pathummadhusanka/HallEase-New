@@ -8,8 +8,11 @@ import { useRouter } from 'next/navigation';
 import { DraftSummary, getRecentDrafts } from './getRecentDrafts';
 import Loading from '@/components/custom/Loading';
 import { useDraftRefreshListener } from './refreshDrafts';
+import ProtectedPage from '@/layouts/ProtectedPage';
 
 export default function ReservePage() {
+
+
 	const router = useRouter();
 	const [drafts, setDrafts] = useState<DraftSummary[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -70,9 +73,8 @@ export default function ReservePage() {
 	};
 
 	const handleEditDraft = (draft: DraftSummary) => {
-		// Navigate to the appropriate form based on draft type
-		router.push(`/reserve/${draft.type}`);
-		// In a real implementation, you would also load the draft data into the form
+		// Navigate to the appropriate form based on draft type, passing draftId as query param
+		router.push(`/reserve/${draft.type}?draftId=${draft.id}`);
 		console.log('Editing draft:', draft);
 	};
 
@@ -103,6 +105,8 @@ export default function ReservePage() {
 	};
 
 	return (
+		<ProtectedPage>
+
 		<SidebarLayout>
 			<PageHeader
 				title='Reserve a Space'
@@ -236,5 +240,6 @@ export default function ReservePage() {
 				</div>
 			</div>
 		</SidebarLayout>
+		</ProtectedPage>
 	);
 }

@@ -1,12 +1,12 @@
 import {
 	LayoutDashboard,
-	CalendarClock,
+	// CalendarClock,
 	Building2,
 	FilePlus2,
 	Airplay,
 	BookOpen,
-	Megaphone,
-	Mails,
+	// Megaphone,
+	// Mails,
 	Settings,
 	UserCog,
 	CircleHelp,
@@ -20,6 +20,7 @@ import {
 	SquareLibrary,
 	Newspaper,
 	Bug,
+	FileSpreadsheet,
 } from 'lucide-react';
 
 export interface SubMenuItem {
@@ -52,9 +53,9 @@ const sidebarMenu = [
 				roleSlugs: [],
 			},
 			{
-				itemTitle: 'Timeline',
-				itemUrl: '/timeline',
-				itemIcon: CalendarClock,
+				itemTitle: 'Analytics',
+				itemUrl: '/analytics',
+				itemIcon: ChartNoAxesCombined,
 				roleSlugs: [],
 			},
 		],
@@ -74,7 +75,7 @@ const sidebarMenu = [
 		sectionTitle: 'Reservations',
 		sectionMenu: [
 			{
-				itemTitle: 'All Reservations',
+				itemTitle: 'Manage Reservations',
 				itemUrl: '/all-reservations',
 				itemIcon: Library,
 				roleSlugs: [],
@@ -117,23 +118,6 @@ const sidebarMenu = [
 		],
 	},
 	{
-		sectionTitle: 'Notifications',
-		sectionMenu: [
-			{
-				itemTitle: 'Announcements',
-				itemUrl: '/announcments',
-				itemIcon: Megaphone,
-				roleSlugs: [],
-			},
-			{
-				itemTitle: 'Email & SMS Reminders',
-				itemUrl: '/remainders',
-				itemIcon: Mails,
-				roleSlugs: [],
-			},
-		],
-	},
-	{
 		sectionTitle: 'Insights',
 		sectionMenu: [
 			{
@@ -143,17 +127,16 @@ const sidebarMenu = [
 				roleSlugs: [],
 				subMenu: [
 					{
+						subTitle: 'Generate Hall Report',
+						subUrl: '/reports/generate',
+						subIcon: FileSpreadsheet,
+					},
+					{
 						subTitle: 'Debug Mode',
 						subUrl: '/reports/debug',
 						subIcon: Bug,
 					},
 				],
-			},
-			{
-				itemTitle: 'Analytics',
-				itemUrl: '/analytics',
-				itemIcon: ChartNoAxesCombined,
-				roleSlugs: [],
 			},
 		],
 	},
